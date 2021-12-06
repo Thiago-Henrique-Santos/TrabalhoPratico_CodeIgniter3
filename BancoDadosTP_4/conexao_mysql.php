@@ -12,4 +12,4 @@ if ($conexao->connect_error)
 
 ?>
 
-//Iniciando conexao my_sql
+//Iniciando conexao my_sql - teste com nova conta
