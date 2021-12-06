@@ -1,0 +1,24 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Professores_model extends CI_Model
+{
+    public function listarProfessores()
+    {
+        $consulta = $this->db->select("id, nome")->from("professor")->get();
+        return $consulta->result();
+    }
+
+    public function exibirProfessores()
+    {
+        $id = $this->input->post("campo_professor");
+        $consulta = $this->db->select("*")->from("professor")->where("id = $id")->get();
+        return $consulta->result();
+    }
+
+    public function exibirProfessoresDadosAdicionais()
+    {
+        $id = $this->input->post("campo_professor");
+        $consulta = $this->db->select("turma.serie, turma.nome AS 'nomeTurma', disciplina.nome AS 'nomeDisciplina'")->from("professor, turma, disciplina")->where("professor.id = $id and turma.id = disciplina.id_turma and professor.id = disciplina.id_professor")->get();
+        return $consulta->result();
+    }
+}
