@@ -21,4 +21,15 @@ class Professores_model extends CI_Model
         $consulta = $this->db->select("turma.serie, turma.nome AS 'nomeTurma', disciplina.nome AS 'nomeDisciplina'")->from("professor, turma, disciplina")->where("professor.id = $id and turma.id = disciplina.id_turma and professor.id = disciplina.id_professor")->get();
         return $consulta->result();
     }
+
+    public function cadastrarProfessor()
+    {
+        $dados = array(
+            'nome' => $this->input->post('nome'),
+            'email' => $this->input->post('email'),
+            'masp' => $this->input->post('masp'),
+            'senha' => $this->input->post('senha')
+        );
+        $this->db->insert("professor", $dados);
+    }
 }

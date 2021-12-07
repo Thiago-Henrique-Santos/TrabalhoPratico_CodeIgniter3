@@ -21,4 +21,18 @@ class Alunos_model extends CI_Model
 		$consulta = $this->db->select("disciplina.nome AS 'nomeDisc'")->from("aluno, turma, disciplina")->where("aluno.id = $id and turma.id = aluno.id_turma and disciplina.id_turma = turma.id")->get();
 		return $consulta->result();
 	}
+
+	public function cadastrarAluno()
+	{
+		$dados = array(
+			'nome' => $this->input->post('nome'),
+			'email' => $this->input->post('email'),
+			'idade' => $this->input->post('idade'),
+			'numero_matricula' => $this->input->post('numero_matricula'),
+			'nome_responsavel' => $this->input->post('nome_responsavel'),
+			'senha' => $this->input->post('senha'),
+			'id_turma' => $this->input->post('campo_turma')
+		);
+		$this->db->insert("aluno", $dados);
+	}
 }

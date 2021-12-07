@@ -19,10 +19,10 @@
             }
             ?>
         </select>
-        <input type="submit" value="Consultar Professor" style="cursor: pointer">
+        <input type="submit" value="Consultar Professor" style="cursor: pointer;background-color: orange; color:white;">
     </form>
 
-    <br><a href="<?php echo site_url('Controlador/voltar'); ?>"><button style='cursor: pointer'>Voltar para o menu</button></a>
+    <br><a href="<?php echo site_url('Controlador/voltar'); ?>"><button style='cursor: pointer;background-color: gray; color:black;'>Voltar para o menu</button></a>
 
 </body>
 

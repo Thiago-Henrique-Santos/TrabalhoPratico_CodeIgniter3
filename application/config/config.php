@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']    = 'http://localhost/TP4BIM/';
+$config['base_url']    = 'http://localhost/TrabalhoPratico_CodeIgniter3/';
 
 /*
 |--------------------------------------------------------------------------

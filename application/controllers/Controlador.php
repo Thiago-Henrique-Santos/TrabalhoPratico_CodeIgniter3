@@ -35,6 +35,46 @@ class Controlador extends CI_Controller
 		}
 	}
 
+	public function cadastrar($opcao)
+	{
+		if ($opcao == 'aluno') {
+			$this->load->model("Turmas_Model");
+			$dados['turmas'] = $this->Turmas_Model->listarTurmas();
+			$this->load->view("cadastrarAluno", $dados);
+		} elseif ($opcao == 'professor') {
+			$this->load->view("cadastrarProfessor");
+		} elseif ($opcao == 'turma') {
+			$this->load->view("cadastrarTurma");
+		} elseif ($opcao == 'disciplina') {
+			$this->load->model("Turmas_Model");
+			$dados['turmas'] = $this->Turmas_Model->listarTurmas();
+			$this->load->model("Professores_Model");
+			$dados['professores'] = $this->Professores_Model->listarProfessores();
+			$this->load->view("cadastrarDisciplina", $dados);
+		}
+	}
+
+	public function cadastrarBD($opcao)
+	{
+		if ($opcao == "aluno") {
+			$this->load->model("Alunos_model");
+			$this->Alunos_model->cadastrarAluno();
+			$this->load->view("menu");
+		} else if ($opcao == "professor") {
+			$this->load->model("Professores_model");
+			$this->Professores_model->cadastrarProfessor();
+			$this->load->view("menu");
+		} else if ($opcao == "turma") {
+			$this->load->model("Turmas_model");
+			$this->Turmas_model->cadastrarTurma();
+			$this->load->view("menu");
+		} else if ($opcao == "disciplina") {
+			$this->load->model("Disciplinas_model");
+			$this->Disciplinas_model->cadastrarDisciplina();
+			$this->load->view("menu");
+		}
+	}
+
 	public function voltar()
 	{
 		$this->load->view('menu');
