@@ -35,4 +35,27 @@ class Alunos_model extends CI_Model
 		);
 		$this->db->insert("aluno", $dados);
 	}
+
+	public function removerAluno()
+	{
+		$id = $this->input->post("campo_aluno");
+		$this->db->where('id', $id);
+		$this->db->delete('aluno');
+	}
+
+	public function atualizarAlunoBD()
+	{
+		$id = $this->input->post('id');
+		$this->db->where('id', $id);
+		$dados = array(
+			'nome' => $this->input->post('nome'),
+			'email' => $this->input->post('email'),
+			'idade' => $this->input->post('idade'),
+			'numero_matricula' => $this->input->post('numero_matricula'),
+			'nome_responsavel' => $this->input->post('nome_responsavel'),
+			'senha' => $this->input->post('senha'),
+			'id_turma' => $this->input->post('campo_turma')
+		);
+		$this->db->update("aluno", $dados);
+	}
 }

@@ -34,7 +34,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
         ?>
 
-        <br><a href="<?php echo site_url('Controlador/voltar'); ?>"><button style="cursor:pointer;">Voltar para Menu</button></a>
+        <br><a href="<?php echo site_url('Controlador/voltar'); ?>"><button style="cursor:pointer;background-color: gray; color:black;">Voltar para Menu</button></a>
 
     </h4>
 

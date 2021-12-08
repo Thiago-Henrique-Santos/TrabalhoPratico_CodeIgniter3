@@ -75,6 +75,73 @@ class Controlador extends CI_Controller
 		}
 	}
 
+	public function remover($opcao)
+	{
+		if ($opcao == "aluno") {
+			$this->load->model("Alunos_model");
+			$dados["alunos"] = $this->Alunos_model->listarAlunos();
+			$this->load->view("removerAluno", $dados);
+		} else if ($opcao == "professor") {
+			$this->load->model("Professores_model");
+			$dados["professores"] = $this->Professores_model->listarProfessores();
+			$this->load->view("removerProfessor", $dados);
+		}
+	}
+
+	public function removerBD($opcao)
+	{
+		if ($opcao == "aluno") {
+			$this->load->model("Alunos_model");
+			$this->Alunos_model->removerAluno();
+			$this->load->view("menu");
+		} else if ($opcao == "professor") {
+			$this->load->model("Professores_model");
+			$this->Professores_model->removerProfessor();
+			$this->load->view("menu");
+		}
+	}
+
+	public function atualizar($opcao)
+	{
+		if ($opcao == "aluno") {
+			$this->load->model("Alunos_model");
+			$dados["alunos"] = $this->Alunos_model->listarAlunos();
+			$this->load->view("atualizarAluno", $dados);
+		} else if ($opcao == "professor") {
+			$this->load->model("Professores_model");
+			$dados["professores"] = $this->Professores_model->listarProfessores();
+			$this->load->view("atualizarProfessor", $dados);
+		}
+	}
+
+	public function atualizarDados($opcao)
+	{
+		if ($opcao == "aluno") {
+			$this->load->model("Alunos_model");
+			$dados["aluno"] = $this->Alunos_model->exibirAlunos();
+			$this->load->model("Turmas_model");
+			$dados['turmas'] = $this->Turmas_model->listarTurmas();
+			$this->load->view("atualizarAlunoEdicao", $dados);
+		} else if ($opcao == "professor") {
+			$this->load->model("Professores_model");
+			$dados["professor"] = $this->Professores_model->exibirProfessores();
+			$this->load->view("atualizarProfessorEdicao", $dados);
+		}
+	}
+
+	public function atualizarBD($opcao)
+	{
+		if ($opcao == "aluno") {
+			$this->load->model("Alunos_model");
+			$this->Alunos_model->atualizarAlunoBD();
+			$this->load->view("menu");
+		} else if ($opcao == "professor") {
+			$this->load->model("Professores_model");
+			$this->Professores_model->atualizarProfessorBD();
+			$this->load->view("menu");
+		}
+	}
+
 	public function voltar()
 	{
 		$this->load->view('menu');
